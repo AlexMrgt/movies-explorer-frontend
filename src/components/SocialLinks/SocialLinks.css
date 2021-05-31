@@ -1,0 +1,34 @@
+.socials-link-list{
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  gap: 0 20px;
+
+  grid-area: social-links;
+  align-items: flex-end;
+}
+
+.socials-link-list__link{
+
+  text-decoration: none;
+
+  color: black;
+
+  font-family: Inter Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  transition: 0.4s;
+}
+
+.socials-link-list__link:hover{
+
+  opacity: .6;
+}
+
+

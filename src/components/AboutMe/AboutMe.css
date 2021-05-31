@@ -1,0 +1,26 @@
+
+.author{
+
+  width: 100%;
+}
+
+.author__wrapper{
+
+  padding: 70px 15px;
+}
+
+@media screen and (min-width: 600px){
+
+  .author__wrapper{
+
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (min-width: 1150px){
+
+  .author__wrapper{
+
+    padding: 100px 70px;
+  }
+}
