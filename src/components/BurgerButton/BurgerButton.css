@@ -1,0 +1,113 @@
+
+.burger{
+
+  position: absolute;
+  z-index: 5;
+
+  right: 15px;
+  top: 20px;
+
+  margin: 0;
+  padding: 0;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  cursor: pointer;
+
+  transition: background .3s;
+
+  outline: none;
+
+  background-color: transparent;
+}
+
+.burger_main{
+
+  background-color:#2BE080 ;
+  border-radius: 4px;
+}
+
+.burger_active{
+  background-color: white;
+}
+
+.burger_active .burger__icon{
+
+  background: none;
+
+}
+
+.burger_active .burger__icon::before{
+
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.burger_active .burger__icon::after{
+
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.burger_active .burger__icon::before,
+.burger_active .burger__icon::after{
+
+  transition-delay: 0s, 0.3s;
+}
+
+.burger__icon{
+
+  display: block;
+  position: absolute;
+
+  top: 18px;
+  left: 8px;
+  right: 8px;
+
+  height: 3px;
+
+  background: black;
+
+  transition: background 0s 0.3s;
+}
+
+.burger__icon::before,
+.burger__icon::after{
+
+  content: "";
+  position: absolute;
+
+  display: block;
+
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background-color: black;
+
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.burger__icon::before{
+
+  top: -10px;
+  transition-property: top, transform;
+}
+
+.burger__icon::after {
+
+  bottom: -10px;
+  transition-property: bottom, transform;
+}
+
+@media screen and (min-width: 1150px) {
+
+  .burger{
+
+    display: none;
+  }
+}

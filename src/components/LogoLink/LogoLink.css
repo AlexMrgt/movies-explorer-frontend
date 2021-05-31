@@ -1,0 +1,24 @@
+.logo-link{
+
+  display: block;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  transition: 0.5s;
+}
+
+.logo-link:hover{
+
+  box-shadow: 0 0 15px #2BE080;
+}
+
+
+@media screen and (min-width:600px){
+
+  .logo-link{
+    align-self: flex-start;
+  }
+}

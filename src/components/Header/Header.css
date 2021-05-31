@@ -1,0 +1,30 @@
+
+.header{
+
+  padding: 20px 15px;
+
+  /* display: flex;
+
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.header_main{
+
+  background-color: #073042;
+}
+
+@media screen and (min-width: 600px){
+  .header{
+
+    padding: 20px 30px;
+  }
+}
+
+@media screen and (min-width: 1150px){
+  .header{
+
+    padding: 20px 70px;
+  }
+
+}

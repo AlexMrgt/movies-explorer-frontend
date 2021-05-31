@@ -1,0 +1,68 @@
+.anon-header{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.anon-header__link-list{
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  list-style: none;
+  gap: 0 10px;
+}
+
+.anon-header__link{
+
+  padding: 5px 12px;
+
+  text-decoration: none;
+
+  display: block;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+
+  border-radius: 3px;
+
+  transition: .4s;
+}
+
+.anon-header__link_type_registration{
+
+  color: white;
+}
+
+.anon-header__link_type_registration:hover{
+
+  opacity: .6;
+}
+
+.anon-header__link_type_login{
+
+  color: black;
+  background-color: #2BE080;
+}
+
+.anon-header__link_type_login:hover{
+
+  box-shadow: 0 0 15px #2BE080;
+}
+
+@media screen and (min-width:600px){
+
+  .anon-header__link{
+
+    padding: 8px 20px;
+
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+}
