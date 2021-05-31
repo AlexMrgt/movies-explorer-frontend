@@ -1,0 +1,44 @@
+
+
+.card-list{
+
+  width: 100%;
+}
+
+.card-list__wrapper{
+
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+
+  padding-top: 40px;
+  padding-bottom: 30px;
+
+  justify-content: center;
+
+  gap: 15px 0;
+}
+
+@media screen and (min-width: 600px){
+
+  .card-list__wrapper{
+
+    grid-template-columns: repeat(auto-fit, 341px);
+    gap: 35px 25px;
+  }
+}
+
+@media screen and (min-width: 1150px){
+
+  .card-list__wrapper{
+
+    grid-template-columns: repeat(auto-fit, 360px);
+    gap: 30px 25px;
+
+    padding-bottom: 10px;
+  }
+}
+
+
+
