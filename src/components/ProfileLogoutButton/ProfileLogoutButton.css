@@ -1,0 +1,24 @@
+.profile-logout-button{
+
+  border: none;
+
+  color: red;
+  background-color: transparent;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+
+  padding: 3px 0;
+
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.profile-logout-button:hover{
+
+  color: rgb(255, 121, 121);
+  transition: .5s all;
+}
