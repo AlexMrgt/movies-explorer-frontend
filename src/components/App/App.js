@@ -4,6 +4,8 @@ import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { AuthorizedContext } from "../../contexts/AuthContext";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
+import getMoviesList from '../../utils/MoviesApi';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Register from '../Register/Register';
@@ -27,30 +29,49 @@ function App() {
 
   const [isOnLoadingData, setLoadingData] = useState(false);
 
-// swap login status dummy
-  useEffect(()=>{
+  // get default films data from third-party side
+  useEffect(() => {
+
+    if (localStorage.getItem('films')) {
+      return
+    }
+
+    getMoviesList()
+      .then(res => {
+        localStorage.setItem('films', JSON.stringify(res));
+        console.log(res);
+
+      })
+      .catch(err=>{
+        console.log(`getMovies request failed: ${err}`);
+      })
+
+  }, [])
+
+  // swap login status dummy
+  useEffect(() => {
 
     const handleLKeyTap = (evt) => {
 
       if (evt.key === 'L')
-      setLoggedIn(!isLoggedIn);
+        setLoggedIn(!isLoggedIn);
     };
 
     document.addEventListener('keydown', handleLKeyTap);
 
-    return ()=>{
+    return () => {
       document.removeEventListener('keydown', handleLKeyTap);
     }
   })
 
   // create default user data dummy
-  useEffect(()=>{
+  useEffect(() => {
 
     setCurrentUser({
       name: 'Виталий',
       email: 'email@email.com'
     });
-  },[]);
+  }, []);
 
   useEffect(() => {
 
@@ -100,13 +121,13 @@ function App() {
   }
 
   // fake loading process on user update dummy
-  function handleUpdateUser({name, email}) {
+  function handleUpdateUser({ name, email }) {
 
     console.log('loading...')
     setLoadingData(true);
 
     setTimeout(() => {
-      setCurrentUser({name, email});
+      setCurrentUser({ name, email });
       console.log('succes')
       setLoadingData(false);
     }, 5000);
@@ -194,7 +215,7 @@ function App() {
                 isOnLoadingData={isOnLoadingData}
                 onUpdateUser={handleUpdateUser}
                 onEditClick={handleEditProfileClick}
-                onCancelEdit = {handleCancelEdit}
+                onCancelEdit={handleCancelEdit}
                 onSignOutClick={handleSignOutClick}
               />
             </Route>
