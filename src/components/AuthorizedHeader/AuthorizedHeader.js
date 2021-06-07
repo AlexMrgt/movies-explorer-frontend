@@ -3,6 +3,8 @@ import LogoLink from "../LogoLink/LogoLink";
 import ProfileLink from "../ProfileLink/ProfileLink";
 import BurgerButton from '../BurgerButton/BurgerButton';
 
+import {BUTTON_TEXT} from '../../utils/constants';
+
 function AuthorizedHeader({
   isMenuPopupOpen,
   onBurgerClick,
@@ -12,11 +14,11 @@ function AuthorizedHeader({
 
   const headerLinks = [
     {
-      name: 'Фильмы',
+      name: BUTTON_TEXT.movies,
       link: '/movies',
     },
     {
-      name: 'Сохраненные фильмы',
+      name: BUTTON_TEXT.savedMovies,
       link: '/saved-movies',
     },
   ]

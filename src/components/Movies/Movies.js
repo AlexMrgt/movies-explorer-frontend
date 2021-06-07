@@ -1,8 +1,18 @@
 import SearchForm from '../SearchForm/SearchForm';
-import MovieCardList from '../MovieCardList/MovieCardList';
-import MoreButton from '../MoreButton/MoreButton';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies() {
+import {MOVIES_INFO_MESSAGES} from '../../utils/constants';
+
+function Movies({
+  data,
+  savedData,
+  isUsedSearch,
+  isFoundAnyMovies,
+  isOnLikeProcess,
+  onSearchMovie,
+  onSaveMovie,
+  onDeleteMovie
+}) {
 
   return (
     <main
@@ -11,11 +21,34 @@ function Movies() {
       <div
         className='movies__wrapper'
       >
-        <SearchForm />
-        <MovieCardList
-          type='unsaved'
+        <SearchForm
+          onSearchMovie={onSearchMovie}
         />
-        <MoreButton />
+
+        <div
+          className='movies__info-container'
+        >
+          {isUsedSearch
+            ?
+            isFoundAnyMovies
+              ? null
+              : <p className='movies__info'> {MOVIES_INFO_MESSAGES.onFoundNoMovies} </p>
+
+            : data && data.length !== 0
+              ? null
+              : <p className='movies__info'>{ MOVIES_INFO_MESSAGES.beforeFirstSearchNoMovies}</p>
+          }
+        </div>
+
+        <MoviesCardList
+          data={data}
+          isOnLikeProcess={isOnLikeProcess}
+          isFoundAnyMovies={isFoundAnyMovies}
+          savedData={savedData}
+          onSaveMovie={onSaveMovie}
+          onDeleteMovie={onDeleteMovie}
+        />
+
       </div>
 
     </main>

@@ -1,6 +1,11 @@
+import useFormWithValidation from '../../hooks/useForm';
 import AuthForm from '../AuthForm/Authform';
 
-function Register() {
+function Register({
+  onSignUp
+}) {
+
+  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation({});
 
   const registerConfig = {
     mode: 'registration',
@@ -13,11 +18,22 @@ function Register() {
     },
   };
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSignUp(values);
+    resetForm();
+  };
+
   return (
     <main
       className='register'
     >
       <AuthForm
+        isFormValid = {isValid}
+        values = {values}
+        onChange = {handleChange}
+        errors = {errors}
+        onSubmit = {handleSubmit}
         config={registerConfig}
       />
 

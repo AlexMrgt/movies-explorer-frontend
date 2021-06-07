@@ -10,24 +10,22 @@ import ProfileLogoutButton from '../ProfileLogoutButton/ProfileLogoutButton';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import Preloader from '../Preloader/Preloader';
 
+import {BUTTON_TEXT} from '../../utils/constants';
+
 function ProfileForm({
   isProfileOnEdit,
-  isOnLoadingData,
+  isOnLoadingProfileData,
   onUpdateUser,
-  onEditClick,
-  onCancelEdit,
-  onSignOutClick,
+  onEnableEdit,
+  onDisableEdit,
+  onSignOut,
 }) {
 
   const currentUser = useContext(CurrentUserContext);
 
-  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation();
+  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation({});
 
-  const TITLE_TEXT = `Привет, ${currentUser.name}!`;
-  const SUBMIT_BUTTON_TEXT = 'Сохранить';
-  const EDIT_BUTTON_TEXT = 'Редактировать';
-  const SIGNOUT_BUTTON_TEXT = 'Выйти из аккаунта';
-  const CANCEL_TEXT = 'Отмена';
+  const TITLE_TEXT = `Привет, ${currentUser.name}.`;
 
   useEffect(() => {
 
@@ -36,7 +34,7 @@ function ProfileForm({
       email: currentUser.email
     });
 
-    onCancelEdit();
+    onDisableEdit();
 
   }, [currentUser, resetForm]);
 
@@ -47,7 +45,7 @@ function ProfileForm({
       email: currentUser.email
     });
 
-    onCancelEdit();
+    onDisableEdit();
   }
 
   function handleSubmit(evt) {
@@ -59,7 +57,6 @@ function ProfileForm({
       email: values.email
     });
 
-    onEditClick();
   }
 
   return (
@@ -99,41 +96,37 @@ function ProfileForm({
 
         {isProfileOnEdit
           ?
-          (
-            <>
-              <SubmitButton
-                buttonClass='profile-form__submit-button'
-                buttonText={SUBMIT_BUTTON_TEXT}
-                isDisabled={!isValid}
-              />
-              <button
-                onClick={handleCancelEditClick}
-                className='profile-form__cancel-edit'
-                type='button'
-              >
-                {CANCEL_TEXT}
-              </button>
-            </>
-          )
+          (isOnLoadingProfileData ?
+
+            <Preloader />
+            :
+            (
+              <>
+                <SubmitButton
+                  buttonClass='profile-form__submit-button'
+                  buttonText={ BUTTON_TEXT.editSubmit}
+                  isDisabled={!isValid}
+                />
+                <button
+                  onClick={handleCancelEditClick}
+                  className='profile-form__cancel-edit'
+                  type='button'
+                >
+                  { BUTTON_TEXT.editCancel}
+                </button>
+              </>
+            ))
           :
           (
             <>
-              {isOnLoadingData
-                ?
-                <Preloader />
-                :
-                <>
-                  <ProfileEditButton
-                    onEditClick={onEditClick}
-                    buttonText={EDIT_BUTTON_TEXT}
-                  />
-                  <ProfileLogoutButton
-                    onSignOutClick={onSignOutClick}
-                    buttonText={SIGNOUT_BUTTON_TEXT}
-                  />
-                </>
-              }
-
+              <ProfileEditButton
+                onEnableEdit={onEnableEdit}
+                buttonText={ BUTTON_TEXT.edit}
+              />
+              <ProfileLogoutButton
+                onSignOut={onSignOut}
+                buttonText={ BUTTON_TEXT.signOut}
+              />
             </>
           )
         }

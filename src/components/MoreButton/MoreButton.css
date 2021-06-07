@@ -6,13 +6,17 @@
   padding:0;
   margin: 0 auto;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
   padding: 50px 0 0 0;
 
+}
 
+.add-more-cards_active{
+
+  display: flex;
 }
 
 .add-more-cards__button{

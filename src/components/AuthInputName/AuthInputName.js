@@ -18,6 +18,7 @@ function AuthInputName({
         inputType='name'
         minLength = '2'
         maxLength = '30'
+        pattern = '[a-zA-Zа-яА-Я -]{2,30}'
         onChange={onChange}
         value={value}
         errorClassName='auth-form__input-error'

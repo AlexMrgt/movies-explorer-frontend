@@ -6,9 +6,9 @@ function checkResponce(responce){
     : Promise.reject(`Ошибка: ${responce.status}`)
 };
 
-export default function getMoviesList(){
+export default async function getMoviesData(){
 
-  return fetch('https://api.nomoreparties.co/beatfilm-movies')
-    .then(res => checkResponce(res));
+  const res = await fetch('https://api.nomoreparties.co/beatfilm-movies');
+  return checkResponce(res);
 }
 

@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import useFormWithValidation from '../../hooks/useForm';
-
 import LogoLink from '../LogoLink/LogoLink';
 import AuthInputPassword from '../AuthInputPassword/AuthInputpassword';
 import AuthInputEmail from '../AuthInputEmail/AuthInputEmail';
@@ -9,10 +7,13 @@ import AuthInputName from '../AuthInputName/AuthInputName';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
 function AuthForm({
-  config
+  config,
+  isFormValid,
+  values,
+  errors,
+  onChange,
+  onSubmit,
 }) {
-
-  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation();
 
   const { mode } = config;
 
@@ -24,42 +25,43 @@ function AuthForm({
     linkDestination
   } = config.text;
 
+
   const registrationInputsMakup = (
     <>
       <AuthInputName
-        onChange={handleChange}
+        onChange={onChange}
         value={values.name}
         error={errors.name}
       />
       <AuthInputEmail
-        onChange={handleChange}
+        onChange={onChange}
         value={values.email}
         error={errors.email}
-        />
+      />
       <AuthInputPassword
-        onChange={handleChange}
+        onChange={onChange}
         value={values.password}
         error={errors.password}
-        />
+      />
     </>
   );
 
   const loginInputMarkup = (
     <>
       <AuthInputEmail
-        onChange={handleChange}
+        onChange={onChange}
         value={values.email}
         error={errors.email}
       />
       <AuthInputPassword
-        onChange={handleChange}
+        onChange={onChange}
         value={values.password}
         error={errors.password}
       />
     </>
   );
 
-  // я не знаю как упростить этот момент, выглядит костыльно
+  // костыль
   function renderInputs(mode) {
     switch (mode) {
       case 'login':
@@ -75,6 +77,7 @@ function AuthForm({
 
     <form
       noValidate
+      onSubmit={onSubmit}
       className='auth-form'
     >
       <LogoLink />
@@ -97,7 +100,7 @@ function AuthForm({
         <SubmitButton
           buttonClass='auth-form__submit-button'
           buttonText={submitButtonText}
-          isDisabled = {!isValid}
+          isDisabled={!isFormValid}
         />
 
         <div
@@ -111,7 +114,6 @@ function AuthForm({
           <Link
             to={linkDestination}
             className='auth-form__link'
-            href='#'
           >
             {linkText}
           </Link>

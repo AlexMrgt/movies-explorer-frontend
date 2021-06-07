@@ -17,16 +17,13 @@
 }
 
 .filter-checkbox__input{
-
-  height: 0;
   width: 0;
+  height: 0;
 }
 
 .filter-checkbox__slider{
 
   position: absolute;
-
-
   top:0;
   left: 0;
   right: 0;

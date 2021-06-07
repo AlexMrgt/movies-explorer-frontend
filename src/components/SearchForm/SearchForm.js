@@ -2,14 +2,24 @@ import useFormWithValidation from '../../hooks/useForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import SearchInput from '../SearchInput/SearchInput';
 
-function SearchForm() {
+function SearchForm({
+  onSearchMovie
+}) {
 
-  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation();
+  const { values, errors, handleChange, isValid, resetForm } = useFormWithValidation({});
+
+  function handleSearchSubmit(evt) {
+
+    evt.preventDefault();
+    onSearchMovie(values);
+    resetForm();
+  }
 
   return (
     <form
       noValidate
       className='search-form'
+      onSubmit={handleSearchSubmit}
     >
 
       <SearchInput
@@ -21,11 +31,12 @@ function SearchForm() {
       <button
         className='search-form__submit-button'
         type='submit'
-        disabled = {!isValid}
+        disabled={!isValid}
       />
 
       <FilterCheckbox
-        captionText='Короткометражки'
+        value={values.amongShortMovies}
+        onChange={handleChange}
       />
 
     </form >

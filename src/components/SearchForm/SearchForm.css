@@ -89,7 +89,11 @@
 
   background-color: gray;
   cursor: default;
-  pointer-events: none;
+}
+
+.search-form__submit-button:hover:disabled{
+
+  opacity: 1;
 }
 
 @media screen and (min-width: 600px){

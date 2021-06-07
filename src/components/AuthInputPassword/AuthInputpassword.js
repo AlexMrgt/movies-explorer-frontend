@@ -14,6 +14,7 @@ function AuthInputPassword({
         labelText='Пароль'
         id='password'
         name='password'
+        minLength = '8'
         inputClassName='auth-form__input'
         inputType='password'
         onChange={onChange}

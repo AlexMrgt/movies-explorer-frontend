@@ -2,9 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 
 import profileIcon from '../../images/icons/account-icon.svg';
 
+import {BUTTON_TEXT} from '../../utils/constants';
+
 function ProfileLink() {
 
-  const PROFILE_LINK_TEXT = 'Аккаунт';
+
 
   const location = useLocation();
 
@@ -19,7 +21,7 @@ function ProfileLink() {
       <p
         className='profile-link__text'
       >
-        {PROFILE_LINK_TEXT}
+        {BUTTON_TEXT.account}
       </p>
 
       <img

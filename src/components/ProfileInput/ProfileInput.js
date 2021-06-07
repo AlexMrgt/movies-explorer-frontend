@@ -10,6 +10,7 @@ function ProfileInput({
   inputType,
   minLength,
   maxLength,
+  pattern = '(.*?)',
   placeholder = '',
   onChange,
   value = '',
@@ -35,6 +36,7 @@ function ProfileInput({
           inputType={inputType}
           minLength={minLength}
           maxLength={maxLength}
+          pattern = {pattern}
           placeholder={placeholder}
           onChange={onChange}
           value={value}
