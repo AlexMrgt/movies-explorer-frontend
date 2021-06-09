@@ -1,0 +1,28 @@
+
+.about {
+
+  width: 100%;
+}
+
+.about__wrapper {
+
+  padding: 70px 20px;
+}
+
+@media screen and (min-width: 600px) {
+
+  .about__wrapper {
+
+    padding: 90px 50px 90px 50px;
+  }
+
+}
+
+@media screen and (min-width: 1150px){
+
+  .about__wrapper{
+    padding: 110px 70px 110px 70px;
+  }
+
+
+}

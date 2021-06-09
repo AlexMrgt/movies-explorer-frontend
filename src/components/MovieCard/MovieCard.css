@@ -1,0 +1,238 @@
+
+.card{
+
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: 270px;
+
+  border-radius: 6px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card__header{
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 15px;
+}
+
+.card__title{
+
+  margin: 0;
+  padding:0;
+
+  max-width: 200px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.card__duration{
+  margin: 0;
+  padding:0;
+
+  color: #A0A0A0;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.card__link{
+  margin-bottom: 10px;
+  height: 170px;
+}
+
+.card__picture{
+
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.card__add-to-fav-button{
+
+  margin:0;
+  padding:0;
+
+  position: relative;
+
+  width: 100px;
+  height: 30px;
+
+  border-radius: 30px;
+  border: none;
+
+  align-self: center;
+  cursor: pointer;
+}
+
+/* unsaved */
+.card__add-to-fav-button_type_unsaved{
+  background-color: #F9F9F9;
+}
+
+.card__add-to-fav-button_type_unsaved::after{
+
+  content: 'Сохранить';
+  position: absolute;
+
+  top: 10px;
+  left: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 11px;
+}
+
+/* liked */
+.card__add-to-fav-button_type_liked{
+  background-color: #FF3055;
+}
+
+.card__add-to-fav-button_type_liked::after{
+
+  content: '';
+  position: absolute;
+
+  top: 13px;
+  left: 45px;
+
+  width: 20px;
+  height: 20px;
+
+  background-image: url('../../images/icons/check-mark.svg');
+  background-repeat: no-repeat;
+}
+
+/* saved */
+.card__add-to-fav-button_type_saved{
+  background-color: #F9F9F9;
+}
+
+.card__add-to-fav-button_type_saved::after{
+
+  content: '';
+  position: absolute;
+
+  top: 13px;
+  left: 45px;
+
+  width: 10px;
+  height: 10px;
+
+  background-image: url('../../images/icons/saved-icon.svg');
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 600px){
+
+  .card{
+
+    width: 340px;
+    height: 310px;
+  }
+
+  .card__header{
+
+    padding: 18px;
+  }
+
+  .card__title{
+
+    max-width: 230px;
+
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .card__duration{
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .card__link{
+
+    height:190px;
+    margin-bottom: 20px ;
+  }
+
+}
+
+
+@media screen and (min-width: 1150px){
+
+  .card{
+    width: 360px;
+    height: 320px;
+  }
+
+  .card__link{
+
+    position: relative;
+    height:200px;
+  }
+
+  .card__link::before{
+
+    position: absolute;
+    content: 'Смотреть трейлер';
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 18px;
+
+    color: white;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding-top: 15px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+
+    transition: .4s ease-in-out;
+  }
+
+  .card__link:hover::before{
+    padding-top: 0;
+    opacity: 1;
+  }
+
+  .card__add-to-fav-button{
+    opacity: 1;
+    transition: .4s;
+  }
+
+  .card__add-to-fav-button:hover{
+
+    opacity: .5;
+  }
+}

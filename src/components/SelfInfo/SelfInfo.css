@@ -1,0 +1,42 @@
+
+
+.self__info{
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 40px 0;
+  grid-template-areas:
+  "photo"
+  "text-info"
+  "social-links";
+
+  margin-bottom: 70px;
+}
+
+.self-info__photo{
+
+  width: 270px;
+  border-radius: 10px;
+  justify-self: center;
+  grid-area: photo;
+}
+
+@media screen and (min-width: 600px){
+
+  .self__info{
+
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 50px;
+    grid-template-areas:
+    "text-info photo"
+    "social-links photo";
+
+    margin-bottom: 90px;
+  }
+
+  .self-info__photo{
+
+    justify-self: flex-end;
+  }
+
+}

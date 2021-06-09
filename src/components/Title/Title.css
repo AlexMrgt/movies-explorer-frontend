@@ -1,0 +1,37 @@
+
+.title-container {
+
+  width: 100%;
+  border-bottom: 1px black solid;
+
+  margin-bottom: 60px;
+}
+
+.title {
+
+  margin: 0;
+  padding: 0 0 30px 0;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@media screen and (min-width: 600px) {
+
+  .title-container {
+
+    margin-bottom: 70px;
+  }
+
+  .title{
+
+    padding: 0 0 20px 0;
+
+    font-size: 22px;
+    line-height: 27px;
+  }
+}
+

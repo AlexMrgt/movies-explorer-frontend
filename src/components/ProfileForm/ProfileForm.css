@@ -1,0 +1,273 @@
+
+.profile-form{
+
+  max-width: 410px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+.profile-form__fieldset{
+
+  margin: 0;
+  padding:0;
+
+  display: flex;
+  flex-direction: column;
+
+  border: none;
+}
+
+.profile-form__title{
+
+  margin: 0;
+  padding: 70px 0 60px 0;
+
+  text-align: center;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.profile-form__input-container{
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+
+  position: relative;
+  border-bottom: 1px #E8E8E8 solid;
+}
+
+.profile-form__input-container:last-child{
+
+  border-bottom: none;
+}
+
+.profile-form__input-container::after{
+
+  position: absolute;
+  content: '';
+  right: -15px;
+  top: 0;
+  height: 15px;
+  width: 15px;
+  background-image: url('../../images/icons/lock.svg');
+
+  opacity: 0;
+
+  transition:  0.4s ;
+}
+
+.profile-form__fieldset:disabled .profile-form__input-container::after{
+  top: 14px;
+  opacity: 1;
+  transition:  0.4s ;
+}
+
+.profile-form__label{
+
+  margin: 0;
+  padding-top: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: none;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile-form__input{
+
+  width: 75%;
+  border: none;
+  outline: none;
+
+  text-align: right;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+
+  transition: .3s;
+}
+
+.profile-form__input:focus:invalid {
+  box-shadow: 0 0 5px red;
+  border-radius: 5px;
+}
+
+.profile-form__input:focus:valid {
+
+  box-shadow: 0 0 5px green;
+  border-radius: 5px;
+}
+
+.profile-form__input:disabled{
+
+  background-color: white;
+}
+
+.profile-form__input-error{
+  display: none;
+}
+
+.profile-form__bottom-input-error{
+
+  color: red;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile-form__controlls{
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px 0;
+
+  justify-content: flex-end;
+  flex: 1 1 0;
+
+  height: 100%;
+}
+
+.profile-form__submit-button{
+
+  width: 100%;
+  padding: 15px 0;
+  border: none;
+  background-color: #2BE080;
+  border-radius: 6px;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  transition: .5s;
+
+  cursor: pointer;
+}
+
+.profile-form__submit-button:disabled{
+
+  background-color: #DCDCDC;
+  pointer-events: none;
+}
+
+.profile-form__submit-button:hover{
+
+  opacity: .7;
+}
+
+.profile-form__cancel-edit{
+
+  width: 70px;
+  background-color: transparent;
+  align-self: center;
+  border:none;
+  color: red;
+
+  cursor: pointer;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  transition: .3s;
+}
+
+.profile-form__cancel-edit:hover{
+
+  opacity: .7;
+}
+
+@media screen and (min-width: 600px) {
+
+  .profile-form{
+
+    justify-content: center;
+  }
+
+  .profile-form__controlls{
+    flex: 0.5 0 0;
+    justify-content: center;
+  }
+
+  .profile-form__input-container::after{
+
+    right: -25px;
+  }
+
+}
+
+@media screen and (min-width: 1150px) {
+
+  .profile-form__label{
+    padding-bottom: 15px;
+  }
+
+  .profile-form__input:focus:invalid + .profile-form__input-error{
+    display: block;
+  }
+
+  .profile-form__input-error{
+
+    position: absolute;
+
+    box-sizing: border-box;
+
+    top: 45px;
+    left: 0;
+
+    z-index: 5;
+    box-shadow: 0 0 15px grey;
+    background-color: white;
+    border-radius: 4px;
+
+    width: 100%;
+    padding: 15px;
+
+
+    color: black;
+
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+
+    display: none;
+  }
+
+  .profile-form__bottom-input-error{
+    display: none;
+  }
+}
+
+
+

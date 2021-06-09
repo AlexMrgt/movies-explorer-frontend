@@ -1,0 +1,51 @@
+
+.profile-link{
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0 15px;
+
+  text-decoration: none;
+  color: black;
+}
+
+.profile-link_main{
+
+  color: white;
+}
+
+.profile-link__text{
+
+  padding: 0;
+  margin:0;
+
+  opacity: 1;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  transition: .4s;
+}
+
+.profile-link:hover .profile-link__text{
+
+  opacity: .7;
+}
+
+.profile-link__icon{
+
+  padding: 8px;
+  background-color: #F9F9F9;
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 1150px){
+  .profile-link{
+
+    display: flex;
+  }
+}
