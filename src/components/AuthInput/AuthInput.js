@@ -10,6 +10,7 @@ function AuthInput({
   inputType,
   minLength,
   maxLength,
+  pattern,
   placeholder = '',
   onChange,
   value = '',
@@ -34,6 +35,7 @@ function AuthInput({
           inputType={inputType}
           minLength={minLength}
           maxLength={maxLength}
+          pattern = {pattern}
           placeholder={placeholder}
           onChange={onChange}
           value={value}

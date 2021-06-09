@@ -1,7 +1,10 @@
-function FilterCheckbox({
-  captionText
-}) {
+import { BUTTON_TEXT } from '../../utils/constants';
 
+function FilterCheckbox({
+  onChange,
+  value,
+
+}) {
 
   return (
 
@@ -12,6 +15,10 @@ function FilterCheckbox({
         className='filter-checkbox__label'
       >
         <input
+          onChange={onChange}
+          value={value}
+          checked={value || false}
+          name='amongShortMovies'
           className='filter-checkbox__input'
           type="checkbox"
         />
@@ -23,7 +30,7 @@ function FilterCheckbox({
       <p
         className='filter-checkbox__caption'
       >
-        {captionText}
+        {BUTTON_TEXT.shortFilmsFilter}
       </p>
     </div>
   )

@@ -1,12 +1,16 @@
 function ProfileLogoutButton({
   buttonText,
-  onSignOutClick
+  onSignOut
 }) {
+
+  function handeSignOutClick(){
+    onSignOut();
+  }
 
   return (
     <button
       className='profile-logout-button'
-      onClick={onSignOutClick}
+      onClick={handeSignOutClick}
       type='button'
     >
       {buttonText}

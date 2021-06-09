@@ -18,6 +18,7 @@ function ProfileInputName({
         minLength = '2'
         maxLength = '30'
         placeholder = 'Имя'
+        pattern = '[a-zA-Zа-яА-Я -]{2,30}'
         inputType='text'
         onChange={onChange}
         value={value}

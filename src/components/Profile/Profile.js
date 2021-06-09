@@ -1,26 +1,25 @@
 import ProfileForm from '../ProfileForm/ProfileForm';
 
 function Profile({
-  onUpdateUser,
-  onEditClick,
-  onSignOutClick,
-  onCancelEdit,
   isProfileOnEdit,
-  isOnLoadingData,
+  isOnLoadingProfileData,
+  onUpdateUser,
+  onEnableEdit,
+  onSignOut,
+  onDisableEdit
 }) {
-
 
   return (
     <main
       className='profile'
     >
       <ProfileForm
-        isOnLoadingData={isOnLoadingData}
-        onSignOutClick={onSignOutClick}
-        onUpdateUser={onUpdateUser}
+        isOnLoadingProfileData={isOnLoadingProfileData}
         isProfileOnEdit={isProfileOnEdit}
-        onEditClick={onEditClick}
-        onCancelEdit = {onCancelEdit}
+        onUpdateUser={onUpdateUser}
+        onEnableEdit={onEnableEdit}
+        onDisableEdit={onDisableEdit}
+        onSignOut={onSignOut}
       />
     </main>
   )

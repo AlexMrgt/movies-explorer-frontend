@@ -1,12 +1,16 @@
 function ProfileEditButton({
   buttonText,
-  onEditClick
+  onEnableEdit
 }) {
+
+  function handleEditClick(){
+    onEnableEdit();
+  }
 
   return (
     <button
       className='profile-edit-button'
-      onClick={onEditClick}
+      onClick={handleEditClick}
     >
       {buttonText}
     </button>

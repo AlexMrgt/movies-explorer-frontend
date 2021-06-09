@@ -6,6 +6,7 @@ function Input({
   inputType,
   minLength,
   maxLength,
+  pattern = '(.*?)',
   placeholder = '',
   onChange,
   value = '',
@@ -20,6 +21,7 @@ function Input({
       type={inputType}
       maxLength={maxLength}
       minLength={minLength}
+      pattern = {pattern}
       placeholder={placeholder}
       autoComplete='off'
       onChange={onChange}

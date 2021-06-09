@@ -1,16 +1,36 @@
+import {
+  getValidImageUrl,
+  getValidPreviewUrl,
+  getValidTrailerUrl
+} from '../../utils/movieUrlUtils';
+import Preloader from '../Preloader/Preloader';
 
 function MovieCard({
-  buttonType,
-  title,
-  duration,
-  link,
-  preview,
-  previewAlt
+  movie,
+  currentLocationPath,
+  isSaved,
+  onSaveMovie,
+  onDeleteMovie,
+  isOnLikeProcess,
 }) {
 
-  const durationCaptionHandler = (duraton) => {
+  const movieData = {
+    country: movie.country || 'No data',
+    director: movie.director || 'No data',
+    duration: movie.duration || 0,
+    year: movie.year || 'No data',
+    description: movie.description || 'No data',
+    image: getValidImageUrl(movie),
+    trailer: getValidTrailerUrl(movie),
+    thumbnail: getValidPreviewUrl(movie),
+    nameRU: movie.nameRU || 'No data',
+    nameEN: movie.nameEN || 'No data',
+    movieId: movie.id || movie.movieId,
+  }
 
-    if (Number.isInteger(duraton)) {
+  const durationCaptionHandler = (duration) => {
+
+    if (Number.isInteger(duration)) {
 
       const words = [
         'минут', 'минута', 'минуты'
@@ -20,9 +40,9 @@ function MovieCard({
       const secondArr = [2, 3, 4];
       const thirdArr = [1];
 
-      const lastDigit = parseInt(duraton.toString().split('').pop());
+      const lastDigit = parseInt(duration.toString().split('').pop());
 
-      if (duraton > 4 && duraton < 21) return words[0];
+      if (duration > 4 && duration < 21) return words[0];
       if (firstArr.includes(lastDigit)) return words[0];
       if (secondArr.includes(lastDigit)) return words[2];
       if (thirdArr.includes(lastDigit)) return words[1];
@@ -31,45 +51,78 @@ function MovieCard({
     return 'минут';
   }
 
+  const titleHandler = (nameRu, nameEn) => {
+
+    if (nameRu !== 'No data') return nameRu;
+
+    if (nameRu === 'No data') {
+
+      if (nameEn !== 'No data') return nameEn
+
+      else return '[Без названия]';
+    }
+  }
+
+  const handleLikeClick = () => {
+
+    if (currentLocationPath === '/movies') {
+
+      if (isSaved) onDeleteMovie(movieData.movieId);
+      else onSaveMovie(movieData);
+    }
+
+    else if (currentLocationPath === '/saved-movies') {
+      onDeleteMovie(movie._id);
+    }
+  }
+
   return (
     <article
       className='card'
     >
-
       <div
         className='card__header'
       >
         <h4
           className='card__title'
         >
-          {title}
+          {titleHandler(movieData.nameRU, movieData.nameEN)}
         </h4>
         <p
           className='card__duration'
         >
-          {duration} {durationCaptionHandler(duration)}
+          {movieData.duration} {durationCaptionHandler(movieData.duration)}
         </p>
       </div>
 
-        <a
-          className='card__link'
-          href={link}
-          target='_blank'
-          rel='noreferrer'
-        >
-          <img
-            src={preview}
-            alt={previewAlt}
-            className='card__picture'
-          />
-        </a>
+      <a
+        className='card__link'
+        href={movieData.trailer}
+        target='_blank'
+        rel='noreferrer'
+      >
+        <img
+          src={movieData.image}
+          alt='Превью фильма'
+          className='card__picture'
+        />
+      </a>
 
-      <button
-        className={`
-          card__add-to-fav-button
-          card__add-to-fav-button_type_${buttonType}`}
-        type='button'
-      />
+      {isOnLikeProcess.id===movieData.movieId||isOnLikeProcess.id===movie._id
+        ? <Preloader />
+        : <button
+          className={`
+            card__add-to-fav-button
+            ${currentLocationPath === '/movies'
+              ? `card__add-to-fav-button_type_${isSaved ? 'liked' : 'unsaved'}`
+              : 'card__add-to-fav-button_type_saved'
+            }
+          `}
+          type='button'
+          onClick={handleLikeClick}
+        />
+      }
+
     </article>
   )
 }
